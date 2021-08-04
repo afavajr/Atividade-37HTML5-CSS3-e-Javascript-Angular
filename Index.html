@@ -1,0 +1,23 @@
+<html>
+<body>
+    <h1 id="nome"></h1>
+    
+
+</body>
+<script>
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https:/sistema-doador-backend.herokuapp.com/pessoas');
+
+xhr.onreadystatechange = () => {
+    if(xhr.readyState == 4) {
+        if(xhr.status == 200) {
+            var meuEmail = JSON.parse(xhr.responseText).content[0].email;
+            document.getElementById("nome").innerHTML = JSON.parse(xhr.responseText).content[0].nome;
+        }
+    }
+};
+
+xhr.send();
+</script>
+</html>
